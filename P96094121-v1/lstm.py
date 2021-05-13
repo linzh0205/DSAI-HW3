@@ -29,12 +29,14 @@ class preprocessing():
         else:
             return scaler.inverse_transform(prices)
 
-    def select_feature(self, feature_num):
-        self.train_set = self.train.iloc[:,feature_num] 
-        
-        return self.train_set
+    def select_feature(self, feature_num, feature):
+        if feature is True:
+            self.train_set = self.train.iloc[:,feature_num]  
+        else:
+            return self.test.iloc[5679:,0].astype(float)
+
     def build_train_data(self, scope):
-        self.training_data = self.training_set_scaled[0:5086]
+        self.training_data = self.training_set_scaled[0:5088]
         X_train = []
         y_train = []
 
@@ -44,12 +46,12 @@ class preprocessing():
         X_train, y_train = np.array(X_train), np.array(y_train)
         X_train = np.reshape(X_train, (X_train.shape[0], X_train.shape[1], 1))
         y_train = np.reshape(y_train, (y_train.shape[0], 1))
-        # print(X_train.shape)
+        # print(self.training_data)
         # print(self.training_data.shape)
         return X_train, y_train
 
     def build_test_data(self, scope):
-        self.testing_data = self.training_set_scaled[5086:]
+        self.testing_data = self.training_set_scaled[5664:]
         X_test = []
         y_test = []
 
@@ -74,7 +76,7 @@ def regressor(X_train,y_train):
     
     regressor.add(Dense(units = 1))
     regressor.compile(optimizer = 'adam', loss = 'mean_squared_error')
-    regressor.fit(X_train, y_train, epochs = 10, batch_size = 1)
+    regressor.fit(X_train, y_train, epochs = 5, batch_size = 1)
     regressor.save('lstm.h5')
     return regressor
 
@@ -82,7 +84,6 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--consumption", default="../data/consumption.csv", help="input the consumption data path")
-    parser.add_argument("--generation", default="../data/generation.csv", help="input the generation data path")
     args = parser.parse_args()
     
     sc = MinMaxScaler(feature_range = (0, 1))       #Data scaler
@@ -91,19 +92,23 @@ if __name__ == '__main__':
     ### Load Data
     load_data = preprocessing(args.consumption)
     load_data.data_load()
-    load_data.select_feature(feature_num)
+    load_data.select_feature(feature_num, feature = True)
     load_data.data_scaler(sc, 0, inverse = False)
     X_train, y_train = load_data.build_train_data(training_scope)
     X_test, y_test = load_data.build_test_data(training_scope)
-    y_test = load_data.data_scaler(sc,y_test,inverse=True)
 
     ### predicted consumption
-    regressor(X_train,y_train)
-    model = keras.models.load_model("lstm.h5")
-    predicted_result  = model.predict(X_test, batch_size = 1)
-    predicted_result = load_data.data_scaler(sc, predicted_result, inverse = True)
-    print(predicted_result)
-    plt.plot(predicted_result, color = 'red', label = 'predict')
-    plt.plot(y_test, color = 'black', label = 'ans')
-    plt.legend()
-    plt.show()
+    # regressor(X_train,y_train)
+    # model = keras.models.load_model("lstm.h5")
+    # predicted_result  = model.predict(X_test, batch_size = 1)
+    # predicted_result = load_data.data_scaler(sc, predicted_result, inverse = True)
+    # print(predicted_result.shape)
+
+    # testing_data = load_data.select_feature(feature_num, feature = False)
+    # testing_data = np.array(testing_data)
+    # print(testing_data.shape)
+    # print(testing_data)
+    # plt.plot(predicted_result, color = 'red', label = 'predict')
+    # plt.plot(testing_data, color = 'black', label = 'ans')
+    # plt.legend()
+    # plt.show()
