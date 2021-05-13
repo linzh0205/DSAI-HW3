@@ -6,4 +6,5 @@
 
 # LSTM model
 lstm是consumption的訓練模型，預測2018/9/1~9/30的consumption
+
 lstm2是generation的訓練模型，預測2018/9/1~9/30的generation
