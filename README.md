@@ -22,3 +22,22 @@
 # Trader Strategy
 計算預測的用電量與產電量之間的差值，當用電量大於產電量表示不法自給自足電量，需要購買電來補足所需電量，接著會我們會出價2塊去平台買電。
 反之用電量小於產電量表示產電是足夠給自己用的，但是我們選擇不交易。
+
+## Run the code
+在pipenv環境下執行main.py
+Python版本為:Python 3.8
+```
+pipenv install --python3.8
+```
+```
+pipenv shell
+```
+在requirements.txt所在的資料夾，輸入安裝套件指令:
+```
+pip install -r requirements.txt
+```
+
+在pipenv下執行main.py:
+```
+pipenv run python main.py
+```
