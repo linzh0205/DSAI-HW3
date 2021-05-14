@@ -15,6 +15,7 @@
 以LSTM模型訓練產電量與用電量，輸入過去7天(2018/9/1~9/30)共168小時的用電量與產電量預測未來一天24小時用電量與產電量。
 
 發電量的預測結果如下圖。
+
 ![4line](https://github.com/linzh0205/DSAI-HW3/blob/main/fig/Figure_1.png)
 
 
