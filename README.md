@@ -1,10 +1,12 @@
 # DSAI-HW3
 綠能交易
 
-# Training Data
+# Data analysis & Training Data
 選擇使用target0的產電與用電資料，並分別預測產電量generation與用電量consumption
 
-# LSTM model
-lstm是consumption的訓練模型，預測2018/9/1~9/30的consumption
+# Method & Model training
+以LSTM模型訓練產電量與用電量，輸入過去7天(2018/9/1~9/30)共168小時的用電量與產電量預測未來一天24小時用電量與產電量。
 
-lstm2是generation的訓練模型，預測2018/9/1~9/30的generation
+# Trader Strategy
+計算預測的用電量與產電量之間的差值，當用電量大於產電量表示不法自給自足電量，需要購買電來補足所需電量，接著會我們會出價2塊去平台買電。
+反之用電量小於產電量表示產電是足夠給自己用的，但是我們選擇不交易。
