@@ -49,12 +49,14 @@ pipenv install --python3.8
 ```
 pipenv shell
 ```
+在pipenv直接執行main.py:
+```
+pipenv run python main.py
+```
+
 安裝套件:
 ```
 pipenv install requests
 ```
 
-在pipenv下執行main.py:
-```
-pipenv run python main.py
-```
+
