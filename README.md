@@ -3,7 +3,7 @@
 
 # Data analysis & Training Data
 選擇使用target0的產電與用電資料，並分別預測產電量generation與用電量consumption
-我們發現用電量在某些月份並不會太高，像是冬天春天(1~5月)，但是在6~8月之後用電量突增
+我們發現用電量在某些月份並不會太高，像是冬天春天(1至5月)，但是在6至8月之後用電量突增
 可以推斷出9/1~30用電量會跟8月的差不多且會稍微上升
 
 ![4line](https://github.com/linzh0205/DSAI-HW3/blob/main/fig/fig_out0.png)
