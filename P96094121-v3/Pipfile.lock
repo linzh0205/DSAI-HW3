@@ -48,11 +48,12 @@
         },
         "joblib": {
             "hashes": [
-                "sha256:9c17567692206d2f3fb9ecf5e991084254fe631665c450b443761c4186a613f7",
-                "sha256:feeb1ec69c4d45129954f1b7034954241eedfd6ba39b5e9e4b6883be3332d5e5"
+                "sha256:091138ed78f800342968c523bdde947e7a305b8594b910a0fea2ab83c3c6d385",
+                "sha256:e1cee4a79e4af22881164f218d4311f60074197fb707e082e803b61f6d137018"
             ],
-            "markers": "python_version >= '3.6'",
-            "version": "==1.0.1"
+            "index": "pypi",
+            "markers": "python_version >= '3.7'",
+            "version": "==1.2.0"
         },
         "kiwisolver": {
             "hashes": [
